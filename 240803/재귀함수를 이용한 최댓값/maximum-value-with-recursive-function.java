@@ -4,7 +4,7 @@ public class Main {
     public static int max;
 
     public static int maxVal(int[] arr, int n){
-        if (n == 0)
+        if (n < 0)
             return max;
 
         if (arr[n] > max){
