@@ -9,18 +9,22 @@ public class Main {
             return 1;
         
         int a = arr[n-1];
+        int max = 0;
 
         if (min > arr[n-1]){
             for (int i = 1; i < min; i++){
                 if (arr[n-1]%i == 0 && min%i == 0)
-                    a /= i;
+                    max = i;
             }
+            a /= max;
+
         }
         else {
             for (int i = 1; i < arr[n-1]; i++){
                 if (arr[n-1]%i == 0 && min%i == 0)
-                    a /= i;
+                     max = i;
             }
+            a /= max;
         }
 
         min *= a;
