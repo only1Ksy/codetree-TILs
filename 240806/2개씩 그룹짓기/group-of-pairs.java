@@ -21,7 +21,7 @@ public class Main {
         Arrays.sort(arr);
 
         for (int i = 0; i < n; i++){
-            arr1[i] = arr[i]+arr[i*2];
+            arr1[i] = arr[i]+arr[n*2-1-i];
         }
 
         Arrays.sort(arr1);
