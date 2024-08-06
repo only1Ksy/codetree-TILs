@@ -20,14 +20,13 @@ public class Main {
         Arrays.sort(arr);
         int num = 0;
 
-        for (int i = 0; i < n; i++){
-            if (num == k){
-                System.out.println(arr[i-1]);
-                break;
-            }
-
-            if (arr[i].startsWith(t)){
+        for (int i = 0; i < n; i++) {
+            if (arr[i].startsWith(t)) {
                 num += 1;
+                if (num == k) {
+                    System.out.println(arr[i]); // 정확한 위치의 문자열 출력
+                    break;
+                }
             }
         }
     }
