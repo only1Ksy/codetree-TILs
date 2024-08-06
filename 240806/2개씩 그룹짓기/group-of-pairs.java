@@ -13,6 +13,11 @@ public class Main {
             arr[i] = input.nextInt();
         }
 
+        if (n == 1){
+            System.out.println(arr[0] + arr[1]);
+        }
+
+        else{
         Arrays.sort(arr);
 
         for (int i = 0; i < n; i++){
@@ -22,5 +27,6 @@ public class Main {
         Arrays.sort(arr1);
 
         System.out.println(arr1[n-1]);
+        }
     }
 }
