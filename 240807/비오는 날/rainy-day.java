@@ -32,22 +32,19 @@ public class Main {
         }
 
         int index = 0;
-        LocalDate d1 = LocalDate.parse(r[0].date);
+        LocalDate nearest = null;
+        Rain ra = null;
 
         for (int i = 0; i < n; i++){
             if (r[i].weather.equals("Rain")){
-                d1 = LocalDate.parse(r[i].date);
-                index = i;
-                break;
+                LocalDate d2 = LocalDate.parse(r[i].date);
+                if (nearest == null || d2.isBefore(nearest)){ //처음 rain인 날을 찾았거나, 방금 찾은 rain인 날이
+                    nearest = d2;                             //이전에 찾았던 것보다 앞서면, 가장 근접 날짜를 변경
+                    ra = r[i];
+                }
             }
         }
 
-        for (int i = 0; i < n; i++){
-            if (r[i].weather.equals("Rain") && d1.isAfter(LocalDate.parse(r[i].date))){
-                index = i;
-            }
-        }
-
-        System.out.println(r[index].date + " " + r[index].day + " " + r[index].weather);
+        System.out.println(ra.date + " " + ra.day + " " + ra.weather);
     }
 }
