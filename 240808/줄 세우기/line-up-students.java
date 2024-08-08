@@ -14,11 +14,11 @@ class Student implements Comparable<Student>{
     }
 
     public int compareTo(Student stu){
-        if (this.height != stu.height && this.weight != stu.weight)
-            return stu.height - this.height;
-        if (this.weight != this.weight && this.height == stu.height)
+        if (this.height == stu.height && this.weight == stu.weight)
+            return this.num - stu.num;
+        if (this.height == stu.height)
             return stu.weight - this.weight;
-        return this.num - stu.num;
+        return stu.height - this.height;
     }
 }
 
