@@ -15,7 +15,10 @@ class Dot implements Comparable<Dot>{
     }
 
     public int compareTo(Dot dot){
-        return (Math.abs(this.x) + Math.abs(this.y)) - (Math.abs(dot.x) + Math.abs(dot.y));
+        if ((Math.abs(this.x) + Math.abs(this.y)) != (Math.abs(dot.x) + Math.abs(dot.y)))
+            return (Math.abs(this.x) + Math.abs(this.y)) - (Math.abs(dot.x) + Math.abs(dot.y));
+        
+        return this.num - dot.num;
     }
 }
 
