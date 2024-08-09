@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.Math;
 
 class Dot implements Comparable<Dot>{
     int x;
@@ -14,7 +15,7 @@ class Dot implements Comparable<Dot>{
     }
 
     public int compareTo(Dot dot){
-        return (this.x + this.y) - (dot.x + dot.y);
+        return (Math.abs(this.x) + Math.abs(this.y)) - (Math.abs(dot.x) + Math.abs(dot.y));
     }
 }
 
