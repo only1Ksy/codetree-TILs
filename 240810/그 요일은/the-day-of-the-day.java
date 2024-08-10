@@ -26,6 +26,9 @@ public class Main {
 
         int d = getD(m2, d2) - getD(m1, d1) + 1;
 
+        int result = d/7;
+        int rest = d%7;
+
         int index = 0;
 
         for (int i = 0; i < 7; i++){
@@ -35,12 +38,12 @@ public class Main {
             }
         }
 
-        int result = d/7;
+        for (int i = 0; i < rest; i++) {
+            if (i == index) {
+                result++;
+        }
+}
 
-        int rest = d%7;
-
-        if (rest <= index)
-            result += 1;
 
         System.out.println(result);
 
