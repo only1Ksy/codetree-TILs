@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static int [] arr = new int [] {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    public static int [] arr = new int [] {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     public static String [] dd = new String [] {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
     public static int getD (int m, int d) {
