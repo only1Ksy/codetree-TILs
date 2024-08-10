@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static int [] arr = new int [] {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    public static int [] arr = new int [] {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     public static String [] dd = new String [] {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
     public static int getD (int m, int d) {
@@ -26,9 +26,6 @@ public class Main {
 
         int d = getD(m2, d2) - getD(m1, d1) + 1;
 
-        int result = d/7;
-        int rest = d%7;
-
         int index = 0;
 
         for (int i = 0; i < 7; i++){
@@ -38,12 +35,12 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < rest; i++) {
-            if (i == index) {
-                result++;
-        }
-}
+        int result = d/7;
 
+        int rest = d%7;
+
+        if (rest >= index)
+            result += 1;
 
         System.out.println(result);
 
