@@ -14,12 +14,17 @@ public class Main {
         int days = 1;
 
         for (int i = m2-1; i >= m1-1; i--){
-            if (i == m2-1)
-                days += d2;
-            else if (i == m1-1)
-                days += arr[i] - d1;
-            else
-                days += arr[i];
+            if (m1 != m2){
+                if (i == m2-1)
+                   days += d2;
+                else if (i == m1-1)
+                    days += arr[i] - d1;
+                else
+                    days += arr[i];
+            }
+            else {
+                days += (d2 - d1);
+            }
         }
 
         System.out.println(days);
