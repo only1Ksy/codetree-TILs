@@ -8,7 +8,7 @@ public class Main {
         int b = input.nextInt();
         int cnt = 0;
 
-        while (n >= 2){
+        while (n >= b){
             digits[cnt++] = n % b;
             n /= b;
         }
@@ -16,9 +16,6 @@ public class Main {
         digits[cnt++] = n;
 
         for(int i = cnt - 1; i >= 0; i--)
-            if (i == 0 && digits[i] == 0)
-                continue;
-            else
-                System.out.print(digits[i]);
+            System.out.print(digits[i]);
     }
 }
