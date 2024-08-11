@@ -16,6 +16,9 @@ public class Main {
         digits[cnt++] = n;
 
         for(int i = cnt - 1; i >= 0; i--)
-            System.out.print(digits[i]);
+            if (i == 0 && digits[i] == 0)
+                continue;
+            else
+                System.out.print(digits[i]);
     }
 }
