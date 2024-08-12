@@ -22,7 +22,7 @@ public class Main {
                 index += x;
             }
             else{
-                for (int j = index; j > index - x; j--){
+                for (int j = index; j >= index - x; j--){
                     arr[j] += 1;
                 }
                 index -= x;
