@@ -16,25 +16,25 @@ public class Main {
 
             if (s.equals("R")){
                 for (int j = index; j < index + x; j++){
-                    bArr[j]++;
-                    if (bArr[j] > 1 && wArr[j] > 1)
-                        arr[j] = 'G';
-                    else if (arr[j] == 'G')
-                        continue;
-                    else
-                        arr[j] = 'B';
+                    if (arr[j] != 'G'){
+                        bArr[j]++;
+                        if (bArr[j] > 1 && wArr[j] > 1)
+                            arr[j] = 'G';
+                        else
+                            arr[j] = 'B';
+                    }
                 }
                 index += x;
             }
             else{
                 for (int j = index - 1; j >= index - x; j--){
-                    wArr[j]++;
-                    if (bArr[j] > 1 && wArr[j] > 1)
-                        arr[j] = 'G';
-                    else if (arr[j] == 'G')
-                        continue;
-                    else
-                        arr[j] = 'W';
+                    if (arr[j] != 'G'){
+                        wArr[j]++;
+                        if (bArr[j] > 1 && wArr[j] > 1)
+                            arr[j] = 'G';
+                        else
+                            arr[j] = 'W';
+                    }
                 }
                 index -= x;
             }
