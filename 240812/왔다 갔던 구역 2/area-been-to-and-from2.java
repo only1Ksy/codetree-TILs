@@ -16,13 +16,13 @@ public class Main {
             //엔터 같이 입력되는 것 방지 위해 뒤에 .trim() 함수를 붙임
 
             if (c.equals("R")){
-                for (int j = index; j < index + x; j++){
+                for (int j = index+1; j < index + x; j++){
                     arr[j] += 1;
                 }
                 index += x;
             }
             else{
-                for (int j = index; j >= index - x; j--){
+                for (int j = index-1; j > index - x; j--){
                     arr[j] += 1;
                 }
                 index -= x;
