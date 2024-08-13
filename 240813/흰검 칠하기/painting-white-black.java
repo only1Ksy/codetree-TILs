@@ -44,7 +44,7 @@ public class Main {
         int bNum = 0;
         int gNum = 0;
 
-        for (int i = 0; i < 2000; i++){
+        for (int i = 0; i < 20000; i++){
             if (arr[i] == 'W')
                 wNum++;
             else if (arr[i] == 'B')
