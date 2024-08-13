@@ -3,12 +3,12 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        char [] arr = new char[2000];
-        int [] wArr = new int [2000];
-        int [] bArr = new int [2000];
+        char [] arr = new char[20000];
+        int [] wArr = new int [20000];
+        int [] bArr = new int [20000];
 
         int n = input.nextInt();
-        int index = 1000;
+        int index = 10000;
 
         for (int i = 0; i < n; i++){
             int x = input.nextInt();
