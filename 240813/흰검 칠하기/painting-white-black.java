@@ -3,12 +3,12 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        char [] arr = new char[20000];
-        int [] wArr = new int [20000];
-        int [] bArr = new int [20000];
+        char [] arr = new char[200000];
+        int [] wArr = new int [200000];
+        int [] bArr = new int [200000];
 
         int n = input.nextInt();
-        int index = 10000;
+        int index = 100000;
 
         for (int i = 0; i < n; i++){
             int x = input.nextInt();
@@ -44,7 +44,7 @@ public class Main {
         int bNum = 0;
         int gNum = 0;
 
-        for (int i = 0; i < 20000; i++){
+        for (int i = 0; i < 200000; i++){
             if (arr[i] == 'W')
                 wNum++;
             else if (arr[i] == 'B')
