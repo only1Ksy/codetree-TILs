@@ -34,37 +34,24 @@ public class Main {
         }
         
         //남은 구간 넓이의 합
-        int firstIndexX = 0;
-        int firstIndexY = 0;
-        int lastIndexX = 0;
-        int lastIndexY = 0;
+        int minX = 2000, minY = 2000, maxX = 0, maxY = 0;
 
-        for (int j = 0; j < 2000; j++){
-            for (int k = 0; k < 2000; k++){
-                if (arr[j][k] > 0){
-                    firstIndexX = j;
-                    firstIndexY = k;
-                    break;
-                }            
+        for (int j = 0; j < 2000; j++) {
+            for (int k = 0; k < 2000; k++) {
+                if (arr[j][k] > 0) {
+                    if (j < minX) minX = j;
+                    if (j > maxX) maxX = j;
+                    if (k < minY) minY = k;
+                    if (k > maxY) maxY = k;
+                }
             }
-            if (firstIndexX != 0) break;
         }
 
-        for (int j = 1999; j >= 0; j--){
-            for (int k = 1999; k >= 0; k--){
-                if (arr[j][k] > 0){
-                    lastIndexX = j;
-                    lastIndexY = k;
-                    break;
-                }            
-            }
-            if (lastIndexX != 0) break;
-        }
 
-        if (firstIndexX == 0 && firstIndexY == 0 && lastIndexX == 0 && lastIndexY == 0)
+        if (maxX == 0 && minX == 0 && maxY == 0 && minY == 0)
             System.out.println(0);
         else
-            System.out.println((lastIndexX - firstIndexX + 1) * (lastIndexY - firstIndexY + 1));
+            System.out.println((maxX - minX + 1) * (maxY - minY + 1));
         
     }
 }
