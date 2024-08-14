@@ -14,8 +14,8 @@ public class Main {
             int x2 = input.nextInt();
             int y2 = input.nextInt();
             
-            for (int j = x1 + 100; j < x2 + 100; j++){
-                for (int k = y1 + 100; k < y2 + 100; k++){
+            for (int j = x1 + 1000; j < x2 + 1000; j++){
+                for (int k = y1 + 1000; k < y2 + 1000; k++){
                     arr[j][k] += 1;
                 }
             }
@@ -28,8 +28,8 @@ public class Main {
         int x2 = input.nextInt();
         int y2 = input.nextInt();
             
-        for (int j = x1 + 100; j < x2 + 100; j++){
-            for (int k = y1 + 100; k < y2 + 100; k++){
+        for (int j = x1 + 1000; j < x2 + 1000; j++){
+            for (int k = y1 + 1000; k < y2 + 1000; k++){
                 arr[j][k] -= 1;
             }
         }
@@ -37,8 +37,8 @@ public class Main {
         //남은 구간 넓이의 합
         int sum = 0;
 
-        for (int j = 0; j < 200; j++){
-            for (int k = 0; k < 200; k++){
+        for (int j = 0; j < 2000; j++){
+            for (int k = 0; k < 2000; k++){
                 if (arr[j][k] > 0)
                     sum++;
             }
