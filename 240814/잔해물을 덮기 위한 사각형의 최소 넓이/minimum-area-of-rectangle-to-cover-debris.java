@@ -48,7 +48,7 @@ public class Main {
         }
 
 
-        if (maxX == 0 && minX == 0 && maxY == 0 && minY == 0)
+        if (maxX == 0 && minX == 2000 && maxY == 0 && minY == 2000)
             System.out.println(0);
         else
             System.out.println((maxX - minX + 1) * (maxY - minY + 1));
