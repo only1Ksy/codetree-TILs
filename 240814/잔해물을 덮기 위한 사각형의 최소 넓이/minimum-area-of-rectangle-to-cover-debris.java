@@ -61,7 +61,10 @@ public class Main {
             if (lastIndexX != 0) break;
         }
 
-        System.out.println((lastIndexX - firstIndexX + 1) * (lastIndexY - firstIndexY + 1));
+        if (firstIndexX == 0 && firstIndexY == 0 && lastIndexX == 0; lastIndexY == 0)
+            System.our.println(0);
+        else
+            System.out.println((lastIndexX - firstIndexX + 1) * (lastIndexY - firstIndexY + 1));
         
     }
 }
