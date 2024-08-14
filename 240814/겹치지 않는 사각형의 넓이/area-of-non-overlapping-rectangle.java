@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int [][] arr = new int [200][200];
+        int [][] arr = new int [2000][2000];
 
         //A, B의 넓이 입력
         for (int i = 0; i < 2; i++){
