@@ -13,12 +13,22 @@ public class Main {
         }
 
         int cnt = 0;
+        int max = 0;
         
         for(int i = 0; i < n; i++)
-            if(i == 0 || arr[i] != arr[i - 1])
+            if(i == 0 || arr[i] == arr[i - 1]){
                 cnt++;
+            }
+            else{
+                cnt++;
+                
+                if (cnt > max){
+                    max = cnt;
+                }
+                cnt = 0;
+            }
 
-        System.out.print(cnt);
+        System.out.print(max);
 
     }
 }
