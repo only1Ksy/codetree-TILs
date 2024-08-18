@@ -54,12 +54,12 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < 1000; i++){
+        for (int i = 0; i < 1000000; i++){
             if (arrA[i] == arrB[i] && (arrA[i-1] != 0 && arrA[i] != 0)){
                 System.out.println(i + 1);
                 break;
             }
-            else if (i == 999){
+            else if (i == 999999){
                 System.out.println(-1);
             }
         }
