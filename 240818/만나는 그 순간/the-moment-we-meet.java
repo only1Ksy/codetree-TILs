@@ -7,8 +7,8 @@ public class Main {
         int n = input.nextInt();
         int m = input.nextInt();
 
-        int [] arrA = new int[1000];
-        int [] arrB = new int[1000];
+        int [] arrA = new int[10000];
+        int [] arrB = new int[10000];
 
         //A의 위치 변화 배열에 저장하기
         int index = 0;
