@@ -41,7 +41,7 @@ public class Main {
         int [] arr = new int [1000000];
 
         for (int i = 0; i < 1000000; i++){
-            if (arrA[i] == arrB[i]) {
+            if (arrA[i] == arrB[i] && i != 0) {
                 arr[i] = arr[i - 1]; // 이전 상태를 유지하여 선두 변경이 없도록 처리
             } 
             else if (arrA[i] > arrB[i]) {
