@@ -55,7 +55,7 @@ public class Main {
         }
 
         for (int i = 0; i < 1000; i++){
-            if (arrA[i] == arrB[i]){
+            if (arrA[i] == arrB[i] && (arrA[i-1] != 0 && arrA[i] != 0)){
                 System.out.println(i + 1);
                 break;
             }
