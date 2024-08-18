@@ -68,8 +68,8 @@ public class Main {
         int sum = 0;
 
         for (int i = 1; i < 1000000; i++){
-            if (arr[i] != arr[i - 1] && arr[i] != 0)
-                sum++;
+            if (arr[i] != arr[i - 1] && arr[i] != 0 && arr[i - 1] != 0)
+                sum++; 
         }
 
         System.out.println(sum);
