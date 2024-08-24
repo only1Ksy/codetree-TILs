@@ -21,17 +21,20 @@ public class Main {
         arr[x][y] = 1;
 
         //두 번째 칸 (0, 1)에 2부터 시작해서 넣어야 하므로 범위 설정
-        for (int i = 2; i <= n*m; i++){
+        for (int i = 2; i <= n * m; i++) {
             int nx = x + dx[dirNum], ny = y + dy[dirNum];
 
-            if(!inRange(nx, ny, n, m) || arr[nx][ny] != 0)
+            // nx, ny가 범위를 벗어나거나 이미 값이 있는 경우 방향 전환
+            if (!inRange(nx, ny, n, m) || arr[nx][ny] != 0) {
                 dirNum = (dirNum + 1) % 4;
+                nx = x + dx[dirNum];
+                ny = y + dy[dirNum];
+            }
 
-            //방향을 바꾼 다음 이동해야 하므로, x = nx가 아닌 새로운 dirNum 이용한 값 대입
-            x = x + dx[dirNum]; y = y + dy[dirNum];
+            // 새로운 위치로 이동
+            x = nx;
+            y = ny;
             arr[x][y] = i;
-
-            System.out.println(arr[x][y]);
         }
 
         for(int i = 0; i < n; i++) {
