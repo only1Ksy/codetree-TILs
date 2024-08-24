@@ -1,40 +1,45 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    public static boolean inRange(int x, int y, int n, int m) {
-        return (0 <= x && x < m && 0 <= y && y < n);
-    }
-
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        //아, 오, 위, 왼 (하나 증가할 때마다 반시계방향으로 회전)
-        int[] dx = { 0, 1,  0, -1};
-        int[] dy = {-1, 0,  1,  0};
-
+        
+        // n: 행(row), m: 열(column) 입력 받기
         int n = input.nextInt();
         int m = input.nextInt();
-
-        int [][] arr = new int [n][m];
-
-        int x = 0, y = 0;
-        int dirNum = 0;
-        arr[x][y] = 1;
-
-        //두 번째 칸 (0, 1)에 2부터 시작해서 넣어야 하므로 범위 설정
-        for (int i = 2; i <= n*m; i++){
-            int nx = x + dx[dirNum], ny = y + dy[dirNum];
-
-            if(!inRange(nx, ny, n, m) || arr[nx][ny] != 0)
-                dirNum = (dirNum + 1) % 4;
-
-            //방향을 바꾼 다음 이동해야 하므로, x = nx가 아닌 새로운 dirNum 이용한 값 대입
-            x = x + dx[dirNum]; y = y + dy[dirNum];
-            arr[x][y] = i;
+        
+        // n * m 크기의 2차원 배열 생성
+        int[][] arr = new int[n][m];
+        
+        // 방향 배열: 아래, 오른쪽, 위쪽, 왼쪽
+        int[] dx = {1, 0, -1, 0};
+        int[] dy = {0, 1, 0, -1};
+        
+        int x = 0, y = 0, dir = 0;  // 시작 위치와 초기 방향 설정
+        for (int i = 1; i <= n * m; i++) {
+            arr[x][y] = i;  // 현재 위치에 숫자 채우기
+            
+            // 다음 위치 계산
+            int nx = x + dx[dir];
+            int ny = y + dy[dir];
+            
+            // 다음 위치가 범위를 벗어나거나 이미 채워진 경우 방향 전환
+            if (nx < 0 || nx >= n || ny < 0 || ny >= m || arr[nx][ny] != 0) {
+                dir = (dir + 1) % 4;  // 다음 방향으로 전환
+                nx = x + dx[dir];
+                ny = y + dy[dir];
+            }
+            
+            // 새 위치로 이동
+            x = nx;
+            y = ny;
         }
-
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++)
+        
+        // 결과 출력
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 System.out.print(arr[i][j] + " ");
+            }
             System.out.println();
         }
     }
