@@ -54,7 +54,7 @@ public class Main {
         }
 
         //배열을 벗어날 때까지 이동시키고 count
-        int cnt = 1;
+        int cnt = 0;
 
         while (inRange(x, y, n)) {
             cnt++;
