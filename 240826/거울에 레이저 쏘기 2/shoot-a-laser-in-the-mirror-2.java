@@ -33,47 +33,38 @@ public class Main {
         int y = 0;
 
         //초기 좌표 설정
-        if (k == 12 || k == 1){
-            x = 0; 
-            y = 0;
-        }
-        else if (k == 2){
-            x = 0; 
-            y = 1;
-        }
-        else if (k == 3 || k == 4){
-            x = 0; 
-            y = 2;
-        }
-        else if (k == 11){
-            x = 1; 
-            y = 0;
-        }
-        else if (k == 5){
-            x = 1; 
-            y = 2;
-        }
-        else if (k == 10 || k == 9){
-            x = 2; 
-            y = 0;
-        }
-        else if (k == 8){
-            x = 2; 
-            y = 1;
-        }
-        else if (k == 7){
-            x = 2; 
-            y = 2;
-        }
+        int [][] ary = new int[n][n];
 
+        int num = 1; //오른쪽부터 시작
+
+        ary[0][0] = 1;
+
+        for (int i = 2; i < (n*4); i++){
+            if (k == 1 || k == n*4)
+                break;
+
+            int nx = x + dx[num];
+            int ny = y + dy[num];
+
+            if (!inRange(nx, ny, n))
+                num = (num - 1 + 4) % 4;
+            
+            x = x + dx[num];
+            y = y + dy[num];
+            ary[x][y] = i;
+
+            if (ary[x][y] == k)
+                break;
+        }
+        
+        //초기 방향 설정
         int dirNum = 0;
 
-        //초기 방향 설정
-        if (k == 1 || k == 2 || k == 3)
+        if (k > 0 && k <= n)
             dirNum = 2;
-        else if (k == 4 || k == 5 || k ==6)
+        else if (k > n && k <= n*2)
             dirNum = 3;
-        else if (k == 7 || k == 8 || k == 9)
+        else if (k > n*2 && k <= n*3)
             dirNum = 0;
         else
             dirNum = 1;
