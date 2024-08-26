@@ -56,32 +56,37 @@ public class Main {
         //배열을 벗어날 때까지 이동시키고 count
         int cnt = 1;
 
-         while (true) {
+        while (true) {
             cnt++;
+            //상우하좌
+            //방향 -1
+            if ((arr[x][y] == '/' && (dirNum == 2 || dirNum == 0))||(arr[x][y] == '\\' && (dirNum == 3 || dirNum == 1))){
+                dirNum = (dirNum - 1 + 4) % 4;
 
-            // 이동할 다음 위치
-            int nx = x + dx[dirNum];
-            int ny = y + dy[dirNum];
+                int nx = x + dx[dirNum];
+                int ny = y + dy[dirNum];
 
-            // 다음 위치가 격자를 벗어나면 종료
-            if (!inRange(nx, ny, n)) break;
-
-            // 거울의 반사에 따른 방향 변경
-            if (arr[nx][ny] == '/') {
-                if (dirNum == 0) dirNum = 1;  // 북 -> 동
-                else if (dirNum == 1) dirNum = 0;  // 동 -> 북
-                else if (dirNum == 2) dirNum = 3;  // 남 -> 서
-                else if (dirNum == 3) dirNum = 2;  // 서 -> 남
-            } else if (arr[nx][ny] == '\\') {
-                if (dirNum == 0) dirNum = 3;  // 북 -> 서
-                else if (dirNum == 1) dirNum = 2;  // 동 -> 남
-                else if (dirNum == 2) dirNum = 1;  // 남 -> 동
-                else if (dirNum == 3) dirNum = 0;  // 서 -> 북
+                if (!inRange(nx, ny, n))
+                    break;
+                else{
+                    x = nx; y = ny;
+                    continue;
+                }
             }
+            //방향 +1
+            else if ((arr[x][y] == '/' && (dirNum == 3 || dirNum == 1))||(arr[x][y] == '\\' && (dirNum == 2 || dirNum == 0))){
+                dirNum = (dirNum + 1) % 4;
 
-            // 좌표 업데이트
-            x = nx;
-            y = ny;
+                int nx = x + dx[dirNum];
+                int ny = y + dy[dirNum];
+
+                if (!inRange(nx, ny, n))
+                    break;
+                else{
+                    x = nx; y = ny;
+                    continue;
+                }
+            }
         }
 
         System.out.println(cnt);
