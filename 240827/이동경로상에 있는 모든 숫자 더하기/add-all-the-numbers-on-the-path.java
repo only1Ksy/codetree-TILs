@@ -15,10 +15,10 @@ public class Main {
         int dirNum = 2;
 
         int n = input.nextInt();
-        int x = n/3;
-        int y = n/3;
-        int nx = n/3;
-        int ny = n/3;
+        int x = n/2;
+        int y = n/2;
+        int nx = n/2;
+        int ny = n/2;
 
         int t = input.nextInt();
 
