@@ -21,7 +21,7 @@ public class Main {
         arr[x][y] = 'A';
 
         //두 번째 칸 (0, 1)에 2부터 시작해서 넣어야 하므로 범위 설정
-        for (int i = 2; i <= n*m; i++){
+        for (int i = 1; i < n*m; i++){
             int nx = x + dx[dirNum], ny = y + dy[dirNum];
 
             if(!inRange(nx, ny, n, m) || arr[nx][ny] != 0)
@@ -29,7 +29,8 @@ public class Main {
 
             //방향을 바꾼 다음 이동해야 하므로, x = nx가 아닌 새로운 dirNum 이용한 값 대입
             x = x + dx[dirNum]; y = y + dy[dirNum];
-            arr[x][y] = (char)('A' + ((i - 1)%'Z'));
+            arr[x][y] = (char)('A' + (i % 26));
+            //알파벳은 총 26자이므로 i값을 26으로 나눈 것의 나머지를 'A'에 더해주면 됨
         }
 
         for(int i = 0; i < n; i++) {
