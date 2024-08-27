@@ -29,7 +29,7 @@ public class Main {
 
             //방향을 바꾼 다음 이동해야 하므로, x = nx가 아닌 새로운 dirNum 이용한 값 대입
             x = x + dx[dirNum]; y = y + dy[dirNum];
-            arr[x][y] = (char)('A' + ((i - 1)%'A'));
+            arr[x][y] = (char)('A' + ((i - 1)%'Z'));
         }
 
         for(int i = 0; i < n; i++) {
