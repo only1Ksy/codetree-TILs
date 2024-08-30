@@ -27,9 +27,9 @@ public class Main {
             int sum = 0;
 
             for (int j = 0; j < a.length(); j++){
-                sum += Math.pow(2, 3 - j) * arr[j];
+                sum += Math.pow(2, a.length() - 1 - j) * arr[j];
             }
-            
+
             max = Math.max(max, sum);
 
             //바꿨던 값 되돌리기
