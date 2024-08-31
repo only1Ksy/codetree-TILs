@@ -5,31 +5,23 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         int n = input.nextInt();
+        int[] arr = new int[n];
 
-        int [] arr = new int[n];
-
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             arr[i] = input.nextInt();
         }
 
-        int [] sum = new int[100000];
+        int maxSum = 0;
 
-        int k = 0;
-
-        for (int i = 0; i < n-1; i++){
-            for (int j = 0; j < n-1; j++){
-                if (i - 1 == j || i + 1 == j) continue;
-
-                sum[k++] = arr[i] + arr[j];
+        // 모든 가능한 쌍을 탐색하면서 인접한 경우를 제외합니다.
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (Math.abs(i - j) > 1) { // i와 j가 인접하지 않을 때만 고려
+                    maxSum = Math.max(maxSum, arr[i] + arr[j]);
+                }
             }
         }
 
-        int max = 0;
-
-        for (int i = 0; i < 100000; i++){
-            max = Math.max(max, sum[i]);
-        }
-
-        System.out.println(max);
+        System.out.println(maxSum);
     }
 }
