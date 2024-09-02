@@ -17,69 +17,46 @@ public class Main {
             }
         }
 
+        //dx, dy 테크닉 차용
+        //가로/세로/오른쪽아래/왼쪽아래
+        int [] dx = { 0,  1,  1, -1};
+        int [] dy = { 1,  0,  1,  1};
+
+        int dirNum = 0;
         int result = 0;
-        int col = 0; int row = 0;
+        int col = 0, row = 0;
 
-        //1) 가로 확인   (1*5)
-        for (int i = 0; i < 19; i++){
-            for (int j = 2; j < 19-2; j++){
-                if (arr[i][j-2] == 1 && arr[i][j-1] == 1 && arr[i][j] == 1 && arr[i][j+1] == 1 && arr[i][j+2] == 1){
-                    result = 1;
-                    col = i; row = j;
-                }
-                if (arr[i][j-2] == 0 && arr[i][j-1] == 0 && arr[i][j] == 0 && arr[i][j+1] == 0 && arr[i][j+2] == 0){
-                    result = 0;
-                    col = i; row = j;
-                }
-            }
-        }
-
-        //2) 세로 확인   (5*1)
-        for (int i = 0; i < 19; i++){
-            for (int j = 2; j < 19-2; j++){
-                if (arr[j-2][i] == 1 && arr[j-1][i] == 1 && arr[j][i] == 1 && arr[j+1][i] == 1 && arr[j+2][i] == 1){
-                    result = 1;
-                    col = j; row = i;
-                }
-                if (arr[j-2][i] == 0 && arr[j-1][i] == 0 && arr[j][i] == 0 && arr[j+1][i] == 0 && arr[j+2][i] == 0){
-                    result = 0;
-                    col = j; row = i;
-                }
-            }
-        }
-
-        //3) 대각선 확인 (왼->오)
         for (int i = 0; i < 19; i++){
             for (int j = 0; j < 19; j++){
-                int x1 = i-1; int y1 = j-1;
-                int x2 = i-2; int y2 = j-2;
-                int x3 = i+1; int y3 = j+1;
-                int x4 = i+2; int y4 = j+2;
+                if (arr[i][j] != 0){
+                    int cnt = 1; //이미 arr[i][j] 하나 카운트
+                    int color = arr[i][j];
+                    int x = i; int y = j;
 
-                if (inRange(x1, y1) && inRange(x2, y2) && inRange(x3, y3) && inRange(x4, y4)){
-                    if (arr[x1][y1] == arr[x2][y2] && arr[x2][y2] == arr[i][j] && arr[i][j] == arr[x3][y3] && arr[x3][y3] == arr[x4][y4]){
-                        result = arr[i][j];
-                        col = i; row = j;
+                    for (int k = 0; k < 4; k++){
+                        while (true){
+                            x += dx[k]; 
+                            y += dy[k];
+
+                            if (inRange(x, y) && arr[x][y] == color){
+                                cnt++;
+                                dirNum = k;
+                            } else{
+                                break;
+                            }
+                        }
+                    }
+                
+
+                    if (cnt == 5){
+                        result = color;
+                        col = i + 2*dx[dirNum];
+                        row = j + 2*dy[dirNum];
+                        break;
                     }
                 }
             }
-        }
-
-        //4) 대각선 확인 2 (오->왼)
-        for (int i = 0; i < 19; i++){
-            for (int j = 0; j < 19; j++){
-                int x1 = i-1; int y1 = j+1;
-                int x2 = i-2; int y2 = j+2;
-                int x3 = i+1; int y3 = j-1;
-                int x4 = i+2; int y4 = j-2;
-
-                if (inRange(x1, y1) && inRange(x2, y2) && inRange(x3, y3) && inRange(x4, y4)){
-                    if (arr[x1][y1] == arr[x2][y2] && arr[x2][y2] == arr[i][j] && arr[i][j] == arr[x3][y3] && arr[x3][y3] == arr[x4][y4]){
-                        result = arr[i][j];
-                        col = i; row = j;
-                    }
-                }
-            }
+            if (cnt == 5) break;
         }
 
         System.out.println(result);
