@@ -20,7 +20,7 @@ public class Main {
             }
         }
 
-        // 방향 벡터 설정: 가로, 세로, 대각선 (오른쪽, 아래, 오른쪽 아래, 왼쪽 아래)
+        // 방향 벡터 설정: 가로, 세로, 대각선 (오른쪽 아래, 왼쪽 아래)
         int[] dx = {0, 1, 1, -1};
         int[] dy = {1, 0, 1, 1};
 
@@ -34,7 +34,7 @@ public class Main {
                         int x = i;
                         int y = j;
 
-                        // 오른쪽 방향으로 전개되는 위치 확인
+                        //기준점으로부터 오른쪽으로 전개되는 위치 확인
                         while (true) {
                             x += dx[k];
                             y += dy[k];
@@ -46,7 +46,7 @@ public class Main {
                             }
                         }
 
-                        if (num == 2) {
+                        if (num >= 2) {
                             result++;
                         }
 
@@ -54,7 +54,7 @@ public class Main {
                         x = i;
                         y = j;
 
-                        // 왼쪽 방향으로 전개되는 위치 확인
+                        //기준점으로부터 왼쪽으로 전개되는 위치 확인
                         while (true) {
                             x -= dx[k];
                             y -= dy[k];
@@ -66,7 +66,7 @@ public class Main {
                             }
                         }
 
-                        if (num == 2) {
+                        if (num >= 2) {
                             result++;
                         }
                     }
