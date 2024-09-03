@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static boolean inRange(int x, int y, int n, int m) {
+    public static boolean inRange(int x, int y, int n, int m){
         return x >= 0 && x < n && y >= 0 && y < m;
     }
 
@@ -26,44 +26,48 @@ public class Main {
 
         int result = 0;
 
-        // 모든 칸에 대해 검사
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-
-                // 'L'과 'E' 모두 확인
-                if (arr[i][j] == 'L' || arr[i][j] == 'E') {
+                if (arr[i][j] == 'L') {
                     for (int k = 0; k < 4; k++) {
-                        int numE = 0;
+                        int num = 0;
                         int x = i;
                         int y = j;
 
-                        // 'L' 혹은 'E' 기준으로 오른쪽 방향 확인
+                        //기준점으로부터 LEE 찾기
                         while (true) {
                             x += dx[k];
                             y += dy[k];
 
                             if (inRange(x, y, n, m) && arr[x][y] == 'E') {
-                                numE++;
+                                num++;
                             } else {
                                 break;
                             }
                         }
 
-                        // 만약 2개의 'E'가 발견되었을 경우
-                        if (numE == 2) {
-                            // 시작이 'L'이면 'LEE' 패턴
-                            if (arr[i][j] == 'L') {
-                                result++;
-                            } 
-                            // 시작이 'E'이면 왼쪽 방향으로 'L'을 찾기
-                            else if (arr[i][j] == 'E') {
-                                int xL = i - dx[k]; 
-                                int yL = j - dy[k];
+                        if (num == 2) {
+                            result++;
+                        }
+                    }
+                }
+                else if (arr[i][j] == 'E') {
+                    for (int k = 0; k < 4; k++) {
+                        int num = 0;
+                        int x = i;
+                        int y = j;
+                        int x1 = i;
+                        int y1 = j;
 
-                                if (inRange(xL, yL, n, m) && arr[xL][yL] == 'L') {
-                                    result++;
-                                }
-                            }
+                        //기준점으로부터 EEL 찾기
+                        x += dx[k]; x1 += 2*dx[k];
+                        y += dy[k]; y1 += 2*dy[k];
+
+                        if (inRange(x, y, n, m) && arr[x][y] == 'E' && arr[x1][y1] == 'L') {
+                            result++;
+                            break;
+                        } else {
+                            break;
                         }
                     }
                 }
