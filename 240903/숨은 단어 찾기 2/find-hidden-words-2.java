@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static boolean inRange(int x, int y, int n, int m){
+    public static boolean inRange(int x, int y, int n, int m) {
         return x >= 0 && x < n && y >= 0 && y < m;
     }
 
@@ -26,48 +26,44 @@ public class Main {
 
         int result = 0;
 
+        // 모든 칸에 대해 검사
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (arr[i][j] == 'L') {
+
+                // 'L'과 'E' 모두 확인
+                if (arr[i][j] == 'L' || arr[i][j] == 'E') {
                     for (int k = 0; k < 4; k++) {
-                        int num = 0;
+                        int numE = 0;
                         int x = i;
                         int y = j;
 
-                        //기준점으로부터 오른쪽으로 전개되는 위치 확인
+                        // 'L' 혹은 'E' 기준으로 오른쪽 방향 확인
                         while (true) {
                             x += dx[k];
                             y += dy[k];
 
                             if (inRange(x, y, n, m) && arr[x][y] == 'E') {
-                                num++;
+                                numE++;
                             } else {
                                 break;
                             }
                         }
 
-                        if (num == 2) {
-                            result++;
-                        }
+                        // 만약 2개의 'E'가 발견되었을 경우
+                        if (numE == 2) {
+                            // 시작이 'L'이면 'LEE' 패턴
+                            if (arr[i][j] == 'L') {
+                                result++;
+                            } 
+                            // 시작이 'E'이면 왼쪽 방향으로 'L'을 찾기
+                            else if (arr[i][j] == 'E') {
+                                int xL = i - dx[k]; 
+                                int yL = j - dy[k];
 
-                        num = 0;
-                        x = i;
-                        y = j;
-
-                        //기준점으로부터 왼쪽으로 전개되는 위치 확인
-                        while (true) {
-                            x -= dx[k];
-                            y -= dy[k];
-
-                            if (inRange(x, y, n, m) && arr[x][y] == 'E') {
-                                num++;
-                            } else {
-                                break;
+                                if (inRange(xL, yL, n, m) && arr[xL][yL] == 'L') {
+                                    result++;
+                                }
                             }
-                        }
-
-                        if (num == 2) {
-                            result++;
                         }
                     }
                 }
