@@ -20,7 +20,7 @@ public class Main {
             }
         }
 
-        // 방향 벡터 설정: 가로, 세로, 대각선 (오른쪽 아래, 왼쪽 아래)
+        // 방향 벡터 설정: 가로, 세로, 대각선 (오른쪽, 아래, 오른쪽 아래, 왼쪽 아래)
         int[] dx = {0, 1, 1, -1};
         int[] dy = {1, 0, 1, 1};
 
@@ -30,12 +30,12 @@ public class Main {
             for (int j = 0; j < m; j++) {
                 if (arr[i][j] == 'L') {
                     for (int k = 0; k < 4; k++) {
+                        int num = 0;
                         int x = i;
                         int y = j;
-                        int num = 0;
 
-                        // 기준점으로부터 LEE 찾기
-                        for (int step = 1; step <= 2; step++) {
+                        // 오른쪽 방향으로 전개되는 위치 확인
+                        while (true) {
                             x += dx[k];
                             y += dy[k];
 
@@ -49,17 +49,24 @@ public class Main {
                         if (num == 2) {
                             result++;
                         }
-                    }
-                } else if (arr[i][j] == 'E') {
-                    for (int k = 0; k < 4; k++) {
-                        int x1 = i + dx[k];
-                        int y1 = j + dy[k];
-                        int x2 = i + 2 * dx[k];
-                        int y2 = j + 2 * dy[k];
 
-                        // 기준점으로부터 EEL 찾기
-                        if (inRange(x1, y1, n, m) && inRange(x2, y2, n, m) 
-                            && arr[x1][y1] == 'E' && arr[x2][y2] == 'L') {
+                        num = 0;
+                        x = i;
+                        y = j;
+
+                        // 왼쪽 방향으로 전개되는 위치 확인
+                        while (true) {
+                            x -= dx[k];
+                            y -= dy[k];
+
+                            if (inRange(x, y, n, m) && arr[x][y] == 'E') {
+                                num++;
+                            } else {
+                                break;
+                            }
+                        }
+
+                        if (num == 2) {
                             result++;
                         }
                     }
