@@ -20,11 +20,14 @@ public class Main {
         for (int i = 0; i < n; i++){
             for (int j = 0; j < n-2; j++){
                 //두번째 격자
-                for (int k = i+1; k < n; k++){
+                for (int k = 0; k < n; k++){
                     for (int l = 0; l < n-2; l++){
-                        int sum = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[k][l] + arr[k][l+1] + arr[k][l+2];
+                        int sum = 0;
 
-                        num = Math.max(num, sum);
+                        if (i != k || l > j+2 || l < j-2){
+                            sum = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[k][l] + arr[k][l+1] + arr[k][l+2];
+                            num = Math.max(num, sum);
+                        }
                     }
                 }
             }
