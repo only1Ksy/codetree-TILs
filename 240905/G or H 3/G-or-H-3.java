@@ -24,19 +24,19 @@ public class Main {
             arr[place[j]] = (alpha[j] == 'G') ? 1 : 2;
         }
 
-        max = 0;
+        int maxSc = 0;
 
-        for (int i = 0; i <= n-k+1; i++){
+        for (int i = 0; i <= max-k; i++){
             int sum = 0;
 
-            for (int j = 0; j <= k; j++){
-                sum += arr[i + j];
+            for (int j = i; j < i+k+1; j++){
+                sum += arr[j];
             }
 
-            max = Math.max(max, sum);
+            maxSc = Math.max(maxSc, sum);
         }
 
-        System.out.println(max);
+        System.out.println(maxSc);
     }
 }
 
