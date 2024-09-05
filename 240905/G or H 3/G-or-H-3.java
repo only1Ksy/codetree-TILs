@@ -9,7 +9,7 @@ public class Main {
         char [] alpha = new char[n];
 
         int k = input.nextInt();
-        int max = 0;
+        int max = k;
 
         for (int i = 0; i < n; i++){
             place[i] = input.nextInt();
