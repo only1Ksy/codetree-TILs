@@ -14,15 +14,18 @@ public class Main {
         int num = 0;
 
         for (int i = 0; i < n; i++){
-            for (int j = i + 1; j < n; j++){
+            for (int j = i; j < n; j++){
                 int sum = 0;
                 int mid = 0;
 
                 for (int k = i; k <= j; k++){
                     sum += arr[k];
                 }
-
-                mid = sum/(j - i + 1);
+                
+                if (sum % (j - i + 1) == 0)
+                    mid = sum/(j - i + 1);
+                else 
+                    continue;
 
                 for (int k = 0; k < n; k++){
                     if (mid == arr[k]){
