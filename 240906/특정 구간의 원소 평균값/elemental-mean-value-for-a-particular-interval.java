@@ -27,7 +27,7 @@ public class Main {
                 else 
                     continue;
 
-                for (int k = 0; k < n; k++){
+                for (int k = i; k <= j; k++){
                     if (mid == arr[k]){
                         num++;
                         break;
