@@ -21,17 +21,8 @@ public class Main {
         for (int i = 0; i < n-t; i++){
             int cnt = 0;
 
-            for (int j = i; j <= i + t; j++){
-                while (arr[j] != h){
-                    if (arr[j] > h){
-                        arr[j]--;
-                        cnt++;
-                    }
-                    else {
-                        arr[j]++;
-                        cnt++;
-                    }
-                }
+            for (int j = i; j < i + t; j++) {
+                cnt += Math.abs(arr[j] - h);
             }
 
             min = Math.min(min, cnt);
