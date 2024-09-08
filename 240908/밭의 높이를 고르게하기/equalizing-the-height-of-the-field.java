@@ -18,7 +18,7 @@ public class Main {
 
         int min = INT_MAX;
 
-        for (int i = 0; i < n-t; i++){
+        for (int i = 0; i <= n-t; i++){
             int cnt = 0;
 
             for (int j = i; j < i + t; j++) {
