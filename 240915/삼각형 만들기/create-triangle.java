@@ -39,6 +39,6 @@ public class Main {
         }
 
         // 최대 넓이에 2를 곱한 값을 출력
-        System.out.println(maxArea * 2);
+        System.out.println(maxArea);
     }
 }
