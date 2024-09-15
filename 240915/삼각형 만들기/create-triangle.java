@@ -21,29 +21,17 @@ public class Main {
         for (int i = 0; i < n; i++){
             for (int j = i + 1; j < n; j++){
                 for (int k = j + 1; k < n; k++){
-                    int val = 0;
+                    // 세 점이 수직으로 교차하는지 확인 (직교)
+                    if ((x[i] == x[j] && y[i] == y[k]) || (x[i] == x[k] && y[i] == y[j]) || (x[j] == x[k] && y[j] == y[i])){
+                        int minX = Math.min(x[i], Math.min(x[j], x[k]));
+                        int maxX = Math.max(x[i], Math.max(x[j], x[k]));
+                        int minY = Math.min(y[i], Math.min(y[j], y[k]));
+                        int maxY = Math.max(y[i], Math.max(y[j], y[k]));
 
-                    // 세 점이 수직으로 교차하는지 확인 (직교 여부)
-                    if (x[i] == x[j] && y[i] == y[k]){
-                        int base = Math.abs(x[j] - x[k]);
-                        int height = Math.abs(y[j] - y[i]);
+                        int val = (maxX - minX) * (maxY - minY);
 
-                        val = base * height;
+                        max = Math.max(max, val);
                     }
-                    else if (x[i] == x[k] && y[i] == y[j]){
-                        int base = Math.abs(x[j] - x[i]);
-                        int height = Math.abs(y[j] - y[k]);
-
-                        val = base * height;
-                    }
-                    else if (x[j] == x[k] && y[j] == y[i]){
-                        int base = Math.abs(x[j] - x[i]);
-                        int height = Math.abs(y[j] - y[k]);
-
-                        val = base * height;
-                    }
-
-                    max = Math.max(max, val);
                 }
             }
         }
