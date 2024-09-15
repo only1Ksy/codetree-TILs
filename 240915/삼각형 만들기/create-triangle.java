@@ -5,40 +5,40 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         int n = input.nextInt();
-        int[][] points = new int[n][2];
+        int[] x = new int[n];
+        int[] y = new int[n];
 
-        // 좌표 입력 받기
+        // 좌표 입력
         for (int i = 0; i < n; i++) {
-            points[i][0] = input.nextInt();  // x좌표
-            points[i][1] = input.nextInt();  // y좌표
+            x[i] = input.nextInt();
+            y[i] = input.nextInt();
         }
 
         int maxArea = 0;
 
-        // 세 개의 점을 골라서 가능한 직사각형 삼각형의 넓이를 계산
+        // 세 점을 선택하여 삼각형을 구성
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 for (int k = j + 1; k < n; k++) {
-                    int x1 = points[i][0], y1 = points[i][1];
-                    int x2 = points[j][0], y2 = points[j][1];
-                    int x3 = points[k][0], y3 = points[k][1];
-
-                    // 삼각형의 변이 x축과 y축에 평행한지 확인하고, 넓이를 계산
-                    if (x1 == x2 && y1 == y3) {  // x축과 y축에 평행한 변을 찾음
-                        int area = Math.abs(x1 - x3) * Math.abs(y1 - y2);
-                        maxArea = Math.max(maxArea, area);
-                    } else if (x1 == x3 && y1 == y2) {
-                        int area = Math.abs(x1 - x2) * Math.abs(y1 - y3);
-                        maxArea = Math.max(maxArea, area);
-                    } else if (x2 == x3 && y2 == y1) {
-                        int area = Math.abs(x2 - x1) * Math.abs(y2 - y3);
-                        maxArea = Math.max(maxArea, area);
+                    // x축과 y축에 평행한 변을 찾고 직사각형의 넓이 계산
+                    if (x[i] == x[j] && y[i] == y[k]) {  // i와 j가 x축에, i와 k가 y축에 평행
+                        int width = Math.abs(y[i] - y[j]);
+                        int height = Math.abs(x[i] - x[k]);
+                        maxArea = Math.max(maxArea, width * height);
+                    } else if (x[i] == x[k] && y[i] == y[j]) {  // i와 k가 x축에, i와 j가 y축에 평행
+                        int width = Math.abs(y[i] - y[k]);
+                        int height = Math.abs(x[i] - x[j]);
+                        maxArea = Math.max(maxArea, width * height);
+                    } else if (x[j] == x[k] && y[j] == y[i]) {  // j와 k가 x축에, j와 i가 y축에 평행
+                        int width = Math.abs(y[j] - y[k]);
+                        int height = Math.abs(x[j] - x[i]);
+                        maxArea = Math.max(maxArea, width * height);
                     }
                 }
             }
         }
 
-        // 최대 넓이에 2를 곱한 값을 출력
+        // 결과 출력
         System.out.println(maxArea);
     }
 }
