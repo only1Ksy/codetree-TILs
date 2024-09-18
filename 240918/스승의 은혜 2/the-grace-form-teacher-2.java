@@ -20,17 +20,15 @@ public class Main {
             int pp = 0;
 
             for (int j = 0; j < n; j++){
-                if (i == j)
+                if (i == j) {
                     sum += p[j]%2 == 0 ? p[j]/2 : 0;
-                
-                sum += p[j];
-
-                if (sum > b){
-                    sum -= p[i];
+                } else {
+                    sum += p[j];
                 }
-                else pp++;
-            }
 
+                if (sum <= b) pp++;
+            }
+            
             if (sum%2 == 0)
                 max = Math.max(max, pp);
         }
