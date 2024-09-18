@@ -27,9 +27,11 @@ public class Main {
                         else sum -= p[j]/2;
                     }
                 } else {
-                    sum += p[j];
-                    if (sum <= b) pp++;
-                    else sum -= p[j];
+                    if (p[j] % 2 == 0){
+                        sum += p[j];
+                        if (sum <= b) pp++;
+                        else sum -= p[j];
+                    }
                 }
             }
             
