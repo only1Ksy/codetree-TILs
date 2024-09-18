@@ -8,34 +8,35 @@ public class Main {
         int[] p = new int[n];
         int b = input.nextInt();
 
-        for (int i = 0; i < n; i++){
+        // 선물 가격 입력
+        for (int i = 0; i < n; i++) {
             p[i] = input.nextInt();
         }
 
         int max = 0;
 
-        // 할인을 받을 학생을 선택
-        for (int i = 0; i < n; i++){
-            int sum = 0;
-            int pp = 0;
+        // 학생들의 선물 가격을 오름차순으로 정렬
+        Arrays.sort(p);
 
-            for (int j = 0; j < n; j++){
-                if (i == j) {
-                    if (p[j] % 2 == 0){
-                        sum += p[j]/2;
-                        if (sum <= b) pp++;
-                        else sum -= p[j]/2;
-                    }
-                } else {
-                    if (p[j] % 2 == 0){
-                        sum += p[j];
-                        if (sum <= b) pp++;
-                        else sum -= p[j];
-                    }
-                }
+        // 각 학생에 대해 할인 적용을 시도
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            int count = 0;
+
+            // 쿠폰을 적용한 가격
+            sum += p[i] / 2;
+            count++;
+
+            // 나머지 학생들의 선물 가격을 더함
+            for (int j = 0; j < n; j++) {
+                if (i == j) continue;  // 이미 할인한 학생 제외
+                if (sum + p[j] > b) break;  // 예산 초과시 종료
+                sum += p[j];
+                count++;
             }
-            
-            max = Math.max(max, pp);
+
+            // 최대 학생 수 갱신
+            max = Math.max(max, count);
         }
 
         System.out.println(max);
