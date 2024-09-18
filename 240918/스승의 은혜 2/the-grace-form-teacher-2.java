@@ -21,12 +21,16 @@ public class Main {
 
             for (int j = 0; j < n; j++){
                 if (i == j) {
-                    sum += p[j]%2 == 0 ? p[j]/2 : 0;
+                    if (p[j] % 2 == 0){
+                        sum += p[j]/2;
+                        if (sum <= b) pp++;
+                        else sum -= p[j]/2;
+                    }
                 } else {
                     sum += p[j];
+                    if (sum <= b) pp++;
+                    else sum -= p[j];
                 }
-
-                if (sum <= b) pp++;
             }
             
             if (sum%2 == 0)
