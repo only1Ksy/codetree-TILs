@@ -33,8 +33,7 @@ public class Main {
                 }
             }
             
-            if (sum%2 == 0)
-                max = Math.max(max, pp);
+            max = Math.max(max, pp);
         }
 
         System.out.println(max);
