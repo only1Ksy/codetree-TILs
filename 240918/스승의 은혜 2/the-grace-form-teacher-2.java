@@ -20,10 +20,9 @@ public class Main {
             int pp = 0;
 
             for (int j = 0; j < n; j++){
-                if (i == j){
-                    sum += p[j]/2; pp++;
-                    continue;
-                }
+                if (i == j)
+                    sum += p[j]%2 == 0 ? p[j]/2 : 0;
+                
                 sum += p[j];
 
                 if (sum > b){
