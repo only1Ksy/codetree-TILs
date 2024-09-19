@@ -1,10 +1,10 @@
 import java.util.*;
 
 class Person {
-    int personNum;
-    int eatenCh;
-    int eatenT;
-    int sickT;
+    int personId;   // 사람 번호
+    int cheeseId;   // 먹은 치즈 번호
+    int eatenTime;  // 먹은 시간
+    int sickTime;   // 아픈 시간
 
     public Person(){}
 }
@@ -13,60 +13,62 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int n = input.nextInt();
+        int peopleCount = input.nextInt();  // 사람 수
+        int cheeseCount = input.nextInt();  // 치즈 수
+        int eatingRecordsCount = input.nextInt(); // 치즈를 먹은 기록 수
+        int sickRecordsCount = input.nextInt();   // 아픈 기록 수
 
-        Person[] p = new Person[n+1];
-        for (int i = 0; i < n+1; i++){
-            p[i] = new Person();
+        Person[] people = new Person[peopleCount + 1];  // 사람들 정보 저장
+        for (int i = 0; i <= peopleCount; i++) {
+            people[i] = new Person();
         }
 
-        int M = input.nextInt();
-        // 상한 치즈 1, 멀쩡한 치즈 0
-        int[] m = new int[M+1];
-
-        int d = input.nextInt();
-        int s = input.nextInt();
+        // 상한 치즈 여부를 저장하는 배열
+        boolean[] spoiledCheese = new boolean[cheeseCount + 1];
 
         // 몇 번째 사람이, 몇 번째 치즈를, 몇 초에 먹었는가?
-        Person[] p1 = new Person[d+1];
-        for (int i = 1; i <= d; i++){
-            p1[i] = new Person();
-
-            p1[i].personNum = input.nextInt();
-            p1[i].eatenCh = input.nextInt();
-            p1[i].eatenT = input.nextInt();
+        Person[] eatingRecords = new Person[eatingRecordsCount + 1];
+        for (int i = 1; i <= eatingRecordsCount; i++) {
+            eatingRecords[i] = new Person();
+            eatingRecords[i].personId = input.nextInt(); // 사람 번호
+            eatingRecords[i].cheeseId = input.nextInt(); // 먹은 치즈 번호
+            eatingRecords[i].eatenTime = input.nextInt(); // 먹은 시간
         }
 
         // 몇 번째 사람이, 몇 초에 아팠는가?
-        for (int i = 0; i < s; i++){
-            int pNum = input.nextInt();
-            p[pNum].sickT = input.nextInt();
+        for (int i = 0; i < sickRecordsCount; i++) {
+            int personId = input.nextInt(); // 아픈 사람 번호
+            people[personId].sickTime = input.nextInt(); // 아프기 시작한 시간
         }
 
-        // 1-m 치즈까지 상한 치즈 감별 (아픈 사람이 아파지기 전에 먹었는가?)
-        for (int i = 1; i <= n; i++){
-            if (p[i].sickT != 0){ // 아픈 사람 번호 i
-                for (int j = 1; j <= d; j++){
-                    if (p1[j].personNum == i && p1[j].eatenT <= p[i].sickT - 1){ // 아프기 전에 먹었는가?
-                        m[p1[j].eatenCh] = 1; // 먹은 치즈가 상함
+        // 각 사람의 기록을 바탕으로 상한 치즈 찾기
+        for (int personId = 1; personId <= peopleCount; personId++) {
+            if (people[personId].sickTime != 0) {  // 아픈 사람이 있을 때
+                for (int j = 1; j <= eatingRecordsCount; j++) {
+                    if (eatingRecords[j].personId == personId &&
+                        eatingRecords[j].eatenTime < people[personId].sickTime) {
+                        // 아파지기 전에 먹은 치즈라면 상한 치즈로 표시
+                        spoiledCheese[eatingRecords[j].cheeseId] = true;
                     }
                 }
             }
         }
 
-        // 상한 치즈 먹은 사람 수 세기 (중복)
-        // set은 자동으로 중복 입력을 방지해 줌
-        Set<Integer> medicatedPeople = new HashSet<>();
+        // 상한 치즈를 먹은 사람들을 찾고, 중복 방지
+        Set<Integer> affectedPeople = new HashSet<>();
 
-        for (int i = 1; i <= M; i++){
-            if (m[i] == 1){ // 치즈가 상했을 때
-                for (int j = 1; j <= d; j++){
-                    if (p1[j].eatenCh == i) 
-                        medicatedPeople.add(p1[j].personNum);
+        for (int cheeseId = 1; cheeseId <= cheeseCount; cheeseId++) {
+            if (spoiledCheese[cheeseId]) {  // 해당 치즈가 상했을 때
+                for (int j = 1; j <= eatingRecordsCount; j++) {
+                    if (eatingRecords[j].cheeseId == cheeseId) {
+                        // 해당 치즈를 먹은 사람 추가
+                        affectedPeople.add(eatingRecords[j].personId);
+                    }
                 }
             }
         }
 
-        System.out.println(medicatedPeople.size());
+        // 약이 필요한 사람의 수 출력
+        System.out.println(affectedPeople.size());
     }
 }
