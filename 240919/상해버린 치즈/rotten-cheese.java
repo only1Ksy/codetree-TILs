@@ -59,12 +59,10 @@ public class Main {
         // set은 자동으로 중복 입력을 방지해 줌
         int max = 0;
 
-        Set<Integer> medicatedPeople = new HashSet<>();
-
         for (int i = 1; i <= M; i++){
             if (m[i] == 1){ // i 번째 치즈가 상했다고 가정
                 Set<Integer> medicatedPeople = new HashSet<>();
-                
+
                 for (int j = 1; j <= d; j++){
                     if (p1[j].eatenCh == i) 
                         medicatedPeople.add(p1[j].personNum);
