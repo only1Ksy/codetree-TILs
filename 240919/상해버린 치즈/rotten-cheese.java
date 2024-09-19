@@ -22,7 +22,7 @@ public class Main {
 
         int M = input.nextInt();
         // 상한 치즈 1, 멀쩡한 치즈 0
-        int[] m = new int[M+1];
+        boolean[] m = new boolean[M+1];
 
         int d = input.nextInt();
         int s = input.nextInt();
@@ -49,7 +49,7 @@ public class Main {
             if (p[i].sickT != 0){ // 아픈 사람 번호 i
                 for (int j = 1; j <= d; j++){
                     if (p1[j].personNum == i && p1[j].eatenT < p[i].sickT){
-                        m[p1[j].eatenCh] = 1; // 먹은 치즈가 상함
+                        m[p1[j].eatenCh] = true; // 먹은 치즈가 상함
                     }
                 }
             }
@@ -60,7 +60,7 @@ public class Main {
         int max = 0;
 
         for (int i = 1; i <= M; i++){
-            if (m[i] == 1){ // i 번째 치즈가 상했다고 가정
+            if (m[i]){ // i 번째 치즈가 상했다고 가정
                 Set<Integer> medicatedPeople = new HashSet<>();
 
                 for (int j = 1; j <= d; j++){
