@@ -63,6 +63,8 @@ public class Main {
 
         for (int i = 1; i <= M; i++){
             if (m[i] == 1){ // i 번째 치즈가 상했다고 가정
+                Set<Integer> medicatedPeople = new HashSet<>();
+                
                 for (int j = 1; j <= d; j++){
                     if (p1[j].eatenCh == i) 
                         medicatedPeople.add(p1[j].personNum);
