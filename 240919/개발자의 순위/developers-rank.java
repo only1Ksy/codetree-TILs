@@ -4,43 +4,59 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        int k = input.nextInt();
-        int n = input.nextInt();
+        int k = input.nextInt(); // 경기 수
+        int n = input.nextInt(); // 개발자 수
 
         int[][] gameResult = new int[k][n];
 
-        for (int i = 0; i < k; i++){
-            for (int j = 0; j < n; j++){
+        // 경기 결과 입력
+        for (int i = 0; i < k; i++) {
+            for (int j = 0; j < n; j++) {
                 gameResult[i][j] = input.nextInt();
             }
         }
 
-        Set<Integer> result = new HashSet<>();
+        // 순위 쌍 (a, b)를 저장할 HashSet
+        Set<String> resultSet = new HashSet<>();
 
-        // 모든 경기에서 서로 다른 (i, j) 쌍을 만들어 결과를 저장
-        for (int l = 0; l < k; l++){
-            for (int i = 0; i < n; i++){
-                for (int j = i + 1; j < n; j++){
-                    result.add(gameResult[l][i]*10 + gameResult[l][j]);
+        // 모든 (a, b) 쌍을 검사
+        for (int a = 1; a <= n; a++) {
+            for (int b = 1; b <= n; b++) {
+                if (a == b) continue; // 자기 자신과의 비교는 무시
+
+                boolean alwaysHigher = true;
+
+                // 모든 경기에서 a가 b보다 높은지 확인
+                for (int l = 0; l < k; l++) {
+                    int rankA = -1;
+                    int rankB = -1;
+
+                    // 순위 위치 찾기
+                    for (int pos = 0; pos < n; pos++) {
+                        if (gameResult[l][pos] == a) {
+                            rankA = pos;
+                        } else if (gameResult[l][pos] == b) {
+                            rankB = pos;
+                        }
+                    }
+
+                    // a가 b보다 항상 높은 경우 확인
+                    if (rankA > rankB) {
+                        continue; // a가 이 경기에서 b보다 높은 경우
+                    } else {
+                        alwaysHigher = false;
+                        break;
+                    }
+                }
+
+                if (alwaysHigher) {
+                    // (a, b) 쌍을 문자열로 변환하여 HashSet에 추가
+                    resultSet.add(a + "," + b);
                 }
             }
         }
 
-        // 반복문을 사용하여 서로 다른 쌍의 원소를 제거
-        Set<Integer> toRemove = new HashSet<>();
-        Iterator<Integer> iterator = result.iterator();
-        
-        while (iterator.hasNext()) {
-            Integer item = iterator.next();
-            Integer reverse = item / 10 + (item % 10) * 10;
-            if (result.contains(reverse)) {
-                toRemove.add(item);
-                toRemove.add(reverse);
-            }
-        }
-
-        result.removeAll(toRemove);
-
-        System.out.println(result.size());
+        // HashSet의 크기 출력
+        System.out.println(resultSet.size());
     }
 }
