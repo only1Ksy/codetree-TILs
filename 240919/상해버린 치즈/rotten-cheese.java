@@ -47,7 +47,7 @@ public class Main {
         for (int i = 1; i <= n; i++){
             if (p[i].sickT != 0){ // 아픈 사람 번호 i
                 for (int j = 1; j <= d; j++){
-                    if (p1[j].personNum == i && p1[j].eatenT < p[i].sickT){
+                    if (p1[j].personNum == i && p1[j].eatenT <= p[i].sickT - 1){ // 아프기 전에 먹었는가?
                         m[p1[j].eatenCh] = 1; // 먹은 치즈가 상함
                     }
                 }
