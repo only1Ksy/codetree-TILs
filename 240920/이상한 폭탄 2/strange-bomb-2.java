@@ -15,10 +15,10 @@ public class Main {
 
         int max = -1;
 
-        for (int i = 0; i < n-k-1; i++){
+        for (int i = 0; i < Math.max(n-k, 1); i++){
             ArrayList <Integer> arr = new ArrayList<>();
 
-            for (int j = i; j <= i + k+1; j++){
+            for (int j = i; j <= i + k; j++){
                 if (arr.contains(a[j])){
                     max = Math.max(max, a[j]);
                 }
