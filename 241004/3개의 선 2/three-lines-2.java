@@ -25,15 +25,45 @@ public class Main {
                     for (int l = 0; l < n; l++){
                         if (x[i] == x[l] || x[j] == x[l] || x[k] == x[l]) 
                             continue;
-                        else if (x[i] == x[l] || x[j] == x[l] || y[k] == y[l])
-                            continue;
-                        else if (x[i] == x[l] || y[j] == y[l] || y[k] == y[l])
-                            continue;
-                        else if (y[i] == y[l] || y[j] == y[l] || y[k] == y[l])
-                            continue;
                         else {
                             isInit = false;
                             break;
+                        }
+                    }
+                    if (!isInit){
+                        isInit = true;
+
+                        for (int l = 0; l < n; l++){
+                            if (x[i] == x[l] || x[j] == x[l] || y[k] == y[l])
+                                continue;
+                            else {
+                                isInit = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (!isInit){
+                        isInit = true;
+
+                        for (int l = 0; l < n; l++){
+                            if (x[i] == x[l] || y[j] == y[l] || y[k] == y[l])
+                                continue;
+                            else   {
+                                isInit = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (!isInit){
+                        isInit = true;
+                        
+                        for (int l = 0; l < n; l++){
+                            if (y[i] == y[l] || y[j] == y[l] || y[k] == y[l])
+                                continue;
+                            else {
+                                isInit = false;
+                                break;
+                            }
                         }
                     }
 
