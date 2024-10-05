@@ -30,8 +30,16 @@ public class Main {
         }
 
         // x 좌표가 모두 같거나 y 좌표가 모두 같다면, 한 구역에 몰리게 되므로 n 출력
-        if (sameX || sameY) {
+        if (sameX && sameY) {
             System.out.println(n);
+            return;
+        }
+        else if (sameX) {
+            System.out.println(n/2);
+            return;
+        }
+        else if (sameY) {
+            System.out.println(n/2);
             return;
         }
 
