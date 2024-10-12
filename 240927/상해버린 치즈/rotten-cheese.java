@@ -52,7 +52,7 @@ public class Main {
                     // 그 사람이 j번째 치즈를 아픈 시간 전에 먹었는지 체크
                     for (int k = 1; k <= d; k++) {
                         if (eatingRecords[k].personNum == i && eatingRecords[k].eatenCh == j) {
-                            if (eatingRecords[k].eatenT + 1 < people[i].sickT) {
+                            if (eatingRecords[k].eatenT < people[i].sickT) {
                                 ateBeforeSick = true;
                                 break;
                             }
