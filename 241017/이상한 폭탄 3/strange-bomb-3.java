@@ -29,7 +29,7 @@ public class Main {
                 }
             }
 
-            if (cnt >= max && cnt > 0){
+            if (cnt >= max && cnt > 1){
                 max = cnt;
                 result = i;
             }
