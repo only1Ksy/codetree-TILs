@@ -18,10 +18,10 @@ public class Main {
         int result = 0;
         for (int i = 0; i <= 1000000; i++){
             int cnt = 0;
-            int preIdx = Integer.MIN_VALUE;
+            int preIdx = -k-1;
 
             for (int j = 0; j < n; j++){
-                if (bomb[j] == i && j-preIdx < k){
+                if (bomb[j] == i && j-preIdx <= k){
                     cnt++; preIdx = j;
                 }
                 else if (bomb[j] == i){
@@ -29,7 +29,7 @@ public class Main {
                 }
             }
 
-            if (cnt >= max && cnt > 1){
+            if (cnt >= max && cnt > 0){
                 max = cnt;
                 result = i;
             }
