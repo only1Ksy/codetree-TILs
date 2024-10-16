@@ -14,7 +14,7 @@ public class Main {
         }
 
         // 터질 걸 고르고 몇 번 터지는지 확인해서 최댓값을 업데이트
-        int max = 1;
+        int max = 0;
         int result = 0;
         for (int i = 0; i <= 1000000; i++){
             int cnt = 0;
@@ -29,7 +29,7 @@ public class Main {
                 }
             }
 
-            if (cnt >= max){
+            if (cnt >= max && cnt >= 1){
                 max = cnt;
                 result = i;
             }
