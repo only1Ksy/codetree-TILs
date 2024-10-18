@@ -6,31 +6,34 @@ public class Main {
 
         int n = input.nextInt();
         int[] arr = new int[n];
-        int minValue = Integer.MAX_VALUE;
-        int maxValue = Integer.MIN_VALUE;
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             arr[i] = input.nextInt();
-            minValue = Math.min(minValue, arr[i]);
-            maxValue = Math.max(maxValue, arr[i]);
         }
 
-        int min = Integer.MAX_VALUE;
-        int sub = (maxValue - minValue - 17)/2;
-        sub *= sub;
+        Arrays.sort(arr);  // 높이를 정렬해서 범위를 쉽게 탐색
 
-        min = 2*sub;
+        int minCost = Integer.MAX_VALUE;
 
-        // 조정할 요소 두 개 선택해 주기
-        /*for (int i = 0; i < n; i++){
+        // 1-17로 구간을 설정해서, 그 구간에서 벗어나는 요소들을
+        // 비용에 포함을 시키면 된다더라
+        for (int i = 0; i < 83; i++){
+            int low = i;
+            int high = i + 17;
+            int cost = 0;
+
             for (int j = 0; j < n; j++){
-                int sum = 0;
-
-
-                min = Math.min(min, sum);
+                if (arr[j] < low){
+                    cost += (low - arr[j])*(low - arr[j]);
+                }
+                else if (arr[j] > high){
+                    cost += (arr[j] - high)*(arr[j] - high);
+                }
             }
-        }*/
-        
-        System.out.println(min);
+
+            minCost = Math.min(minCost, cost);
+        }
+
+        System.out.println(minCost);
     }
 }
