@@ -48,7 +48,7 @@ public class Main {
             }
 
             // 배열 원상복귀
-            for (int j = startIdx; j > startIdx-l; j--){
+            for (int j = startIdx; j > startIdx-l && j >= 0; j--){
                 arr[j] -= 1;
             }
         }
