@@ -17,6 +17,7 @@ public class Main {
             if (c[i] == '1' && tempIdx == -1){
                 tempIdx = i;
                 first1 = i;
+                last1 = i;
             }
             else if (c[i] == '1'){
                 int distance = i - tempIdx;
