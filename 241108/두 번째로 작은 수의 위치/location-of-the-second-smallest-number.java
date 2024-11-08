@@ -14,18 +14,19 @@ public class Main {
         }
 
         Arrays.sort(cpArr);
+        int secondVal = -1;
         int minVal = cpArr[0];
 
         for (int i = 0; i < n; i++){
             if (cpArr[i] > minVal){
-                minVal = cpArr[i]; break;
+                secondVal = cpArr[i]; break;
             }
         }
 
         int position = -1;
 
         for (int i = 0; i < n; i++){
-            if (minVal == arr[i])
+            if (secondVal == arr[i])
                 position = i + 1;
         } 
 
