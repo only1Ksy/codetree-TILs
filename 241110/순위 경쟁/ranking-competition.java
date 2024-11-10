@@ -9,6 +9,7 @@ public class Main {
         // 0 : A score, 1: B score, 2: C score
         int[] score = new int[3];
         int[] board = new int[3];
+        Arrays.fill(board, 1);
         int cnt = 0;
 
         for (int i = 0; i < n; i++){
