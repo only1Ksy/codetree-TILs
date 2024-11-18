@@ -15,7 +15,7 @@ public class Main {
         int b2 = input.nextInt();
 
         int result = (Math.max(y2, b2) - Math.min(y1, b1)) *
-                     (Math.max(x2, a1) - Math.min(x1, a1));
+                     (Math.max(x2, a2) - Math.min(x1, a1));
 
         System.out.println(result);
     }
